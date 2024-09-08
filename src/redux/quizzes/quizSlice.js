@@ -1,28 +1,18 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+// src/redux/quizSlice.js
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchQuizzes, fetchQuizData, submitQuiz } from "./quizThunks";
 
-// Async thunk to fetch quiz data
-export const fetchQuizData = createAsyncThunk("quiz/fetchQuizData", async (quizId) => {
-  const response = await axios.get(`https://dummy-q-server.onrender.com/api/quizzes/${quizId}`);
-  return response.data;
-});
-
-// Async thunk to submit quiz answers
-export const submitQuiz = createAsyncThunk("quiz/submitQuiz", async ({ quizId, payload }) => {
-  const response = await axios.post(`https://dummy-q-server.onrender.com/api/quizzes/${quizId}/submit`, payload, {
-    headers: { "Content-Type": "application/json" },
-  });
-  return response.data;
-});
+const initialState = {
+  quizzes: [],
+  quizData: {},
+  result: {},
+  status: "idle",
+  error: null,
+};
 
 const quizSlice = createSlice({
   name: "quiz",
-  initialState: {
-    quizData: {},
-    result: {},
-    status: "idle",
-    error: null,
-  },
+  initialState,
   reducers: {
     clearResult: (state) => {
       state.result = null;
@@ -30,6 +20,20 @@ const quizSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Fetch all quizzes
+      .addCase(fetchQuizzes.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchQuizzes.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.quizzes = action.payload;
+      })
+      .addCase(fetchQuizzes.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+
+      // Fetch single quiz by ID
       .addCase(fetchQuizData.pending, (state) => {
         state.status = "loading";
       })
@@ -41,6 +45,8 @@ const quizSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+
+      // Submit quiz answers
       .addCase(submitQuiz.pending, (state) => {
         state.status = "loading";
       })

@@ -21,7 +21,8 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { fetchQuizData, submitQuiz, clearResult } from "../features/quizzes/quizSlice";
+import { fetchQuizData, submitQuiz } from "../redux/quizzes/quizThunks";
+import { clearResult } from "../redux/quizzes/quizSlice";
 
 // Validation Schema using Yup
 const schema = yup.object({

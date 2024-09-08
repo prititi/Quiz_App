@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Alert, Button, CircularProgress, TextField, useMediaQuery, useTheme } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "@mui/material";
-import { registerFailure, registerStart, registerSuccess } from "../features/auth/authSlice";
+import { registerFailure, registerStart, registerSuccess } from "../redux/auth/authSlice";
 
 export const Register = () => {
   const [credentials, setCredentials] = useState({

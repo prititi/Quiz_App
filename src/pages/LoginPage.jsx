@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginFailure, loginStart, loginSuccess } from "../features/auth/authSlice";
+import { loginFailure, loginStart, loginSuccess } from "../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { Alert, Button, CircularProgress, Link, TextField, useMediaQuery, useTheme } from "@mui/material";
 
@@ -24,7 +24,7 @@ const LoginPage = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const response = await fetch("https://dummy-q-server.onrender.com/api/auth/login", {
+      const response = await fetch("https://clinical-3ndq.onrender.com/api/v1/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import React, { useEffect } from "react";
+import { Card, CardContent, Typography, Button, CircularProgress } from "@mui/material";
 import QuizIcon from "@mui/icons-material/Quiz";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchQuizzes } from "../redux/quizzes/quizThunks";
 
 const QuizzesList = () => {
-  const [quizzes, setQuizzes] = useState([]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const fetchQuizzes = async () => {
-    try {
-      const response = await axios.get("https://dummy-q-server.onrender.com/api/quizzes");
-      setQuizzes(response.data);
-    } catch (error) {
-      console.error("Error fetching quizzes, using hardcoded data", error);
-      // Fallback to hardcoded data is already in state initialization
-    }
-  };
+  const { quizzes, status, error } = useSelector((state) => state.quiz); // Access quizzes state from the Redux store
 
   useEffect(() => {
-    fetchQuizzes();
-  }, []);
+    if (status === "idle") {
+      dispatch(fetchQuizzes()); // Dispatch the thunk to fetch quizzes when component mounts
+    }
+  }, [dispatch, status]);
 
   const handleTakeQuiz = (quizId, quiz) => {
     console.log({ quiz });
@@ -39,8 +34,14 @@ const QuizzesList = () => {
       <Typography variant="h4" component="h1" className="text-center font-bold text-gray-800 mb-8">
         Available Quizzes
       </Typography>
+      {status === "loading" && (
+        <div className="min-h-[60vh] flex justify-center items-center">
+          <CircularProgress />
+        </div>
+      )}
+      {/* {status === "failed" && <p>Error: {error}</p>} */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {quizzes.map((quiz) => (
+        {quizzes?.map((quiz) => (
           <Card key={quiz.quiz_id} className="bg-white shadow-lg rounded-lg">
             <CardContent className="p-6">
               <Typography variant="h5" component="div" className="font-bold text-gray-800 mb-2">

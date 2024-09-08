@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import counterReducer from "../features/auth/counterSlice";
-import authReducer from "../features/auth/authSlice";
-import quizzesReducer from "../features/quizzes/quizSlice";
+import counterReducer from "../redux/auth/counterSlice";
+import authReducer from "../redux/auth/authSlice";
+import quizzesReducer from "../redux/quizzes/quizSlice";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
