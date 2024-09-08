@@ -48,23 +48,38 @@ This quiz application allows users to create, manage, and take quizzes. The app 
 ### User Quiz API
 - **Submit Quiz**: POST `/api/quizzes/:id/submit` – Submit user answers for a specific quiz.
 - **Quiz Report**: GET `/api/quizzes/:id/submissions` – Retrieve the quiz report for a user.
-<!-- 
+
 ## Screenshots
 
 ### Home Page
-![Home Page](src/images/homepage.png)
+![Home Page](https://media.discordapp.net/attachments/1165275866897580074/1282409832451936256/Screenshot_2024-09-08_235554.png?ex=66df40ba&is=66ddef3a&hm=6107eeaa72ba166a6656d6b14481f99b55fed8c311f9279b98fd645eacf8e63c&=&format=webp&quality=lossless&width=1396&height=778)
 
-### Admin Login
-![Admin Login](src/images/admin-login.png)
+### Admin Login / Registration
+![Admin Login](https://media.discordapp.net/attachments/1165275866897580074/1282409886491086889/Screenshot_2024-09-09_000648.png?ex=66df40c6&is=66ddef46&hm=91e3409defe70ccbe139b44d40eef1877479e71cb369be08417f329896d817eb&=&format=webp&quality=lossless&width=1389&height=778)
+
+![Admin Registration](https://media.discordapp.net/attachments/1165275866897580074/1282409887804162088/Screenshot_2024-09-09_000636.png?ex=66df40c7&is=66ddef47&hm=11b8257c5dadf39702e98a8acca583bf2a1ca6b54d23be56399195373506935a&=&format=webp&quality=lossless&width=1392&height=778)
+
+### Quiz Update and Delete
+![Quiz Update](https://media.discordapp.net/attachments/1165275866897580074/1282409887472550009/Screenshot_2024-09-09_000002.png?ex=66df40c7&is=66ddef47&hm=5a1275171af0f69c23d33d3219d2ecc71d5b1591cf5b7d8c52781e24a817df77&=&format=webp&quality=lossless&width=1399&height=778)
+
 
 ### Quiz Creation
-![Quiz Creation](src/images/quiz-creation.png)
+![Quiz Creation](https://media.discordapp.net/attachments/1165275866897580074/1282409886969364520/Screenshot_2024-09-08_235945.png?ex=66df40c7&is=66ddef47&hm=5c92b25c2c241f1d6e4694550f78e629bb8dcf26825ac50019374df5f6a06b0c&=&format=webp&quality=lossless&width=1395&height=778)
+
+### User View Quizzes
+![User View Quizzes](https://media.discordapp.net/attachments/1165275866897580074/1282409832787345449/Screenshot_2024-09-08_235613.png?ex=66df40ba&is=66ddef3a&hm=dcc275505e22181ea1b8a59a2f6dff3965f267955613cf871b3d6cf5cc1112de&=&format=webp&quality=lossless&width=1395&height=778)
 
 ### Quiz Taking
-![Quiz Taking](src/images/quiz-taking.png)
+![Quiz Taking](https://media.discordapp.net/attachments/1165275866897580074/1282409833835921471/Screenshot_2024-09-08_235711.png?ex=66df40ba&is=66ddef3a&hm=f639500316bdd5f08ee5ffe530c0a7d0463f607514830ab300c59a6fe54e62f5&=&format=webp&quality=lossless&width=1389&height=778)
 
 ### Quiz Report
-![Quiz Report](src/images/quiz-report.png) -->
+![Quiz Report](https://media.discordapp.net/attachments/1165275866897580074/1282409834150367262/Screenshot_2024-09-08_235734.png?ex=66df40ba&is=66ddef3a&hm=35a1a5e0cd30beca5609c8f85d6f182ef437a7a98b0411378f9718e343419241&=&format=webp&quality=lossless&width=1395&height=778)
+
+### Quiz Leader Board
+![Quiz Leader Board](https://media.discordapp.net/attachments/1165275866897580074/1282409834440036476/Screenshot_2024-09-08_235749.png?ex=66df40ba&is=66ddef3a&hm=dda18c2830ab0c39baa2d90e864c7de0282c76e5bab135b99d9eda924745e13b&=&format=webp&quality=lossless&width=1395&height=778)
+
+### Quiz Chart Report
+![Quiz Chart Report](https://media.discordapp.net/attachments/1165275866897580074/1282409834792222740/Screenshot_2024-09-08_235803.png?ex=66df40ba&is=66ddef3a&hm=448ce761ca26f4c12a228c376175297343bf607cb99437adb10a9ab2ec251aeb&=&format=webp&quality=lossless&width=1396&height=778)
 
 ## Getting Started
 
