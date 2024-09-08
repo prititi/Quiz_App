@@ -1,0 +1,153 @@
+submit quiz body
+http://localhost:8000/api/quizzes/66dac88ac434ff51034bf00b/submit
+{
+  "userName": "John",
+  "startTime": "2024-09-06T12:00:00Z", 
+  "answers": [
+    {
+      "question_id": "66dc33e565b2e27d7017d5d2", 
+      "option_id": "66dc33e565b2e27d7017d5d8" 
+    },
+    {
+      "question_id": "66dc33e565b2e27d7017d5dc", 
+      "option_id": "66dc33e565b2e27d7017d5e0" 
+    },
+    {
+      "question_id": "66dc33e565b2e27d7017d5e6", 
+      "option_id": "66dc33e565b2e27d7017d5ea"
+    },
+    {
+      "question_id": "66dc33e565b2e27d7017d5f0", 
+      "option_id": "66dc33e565b2e27d7017d5f2"
+    },
+    {
+      "question_id": "66dc33e565b2e27d7017d5fa", 
+      "option_id": "66dc33e565b2e27d7017d5fe" 
+    }
+  ]
+}
+
+create quiz body
+https://dummy-q-server.onrender.com/api/quizzes/
+{
+  "title": "General Knowledge Quiz",
+  "description": "A quiz to test your general knowledge",
+  "questions": [
+    {
+      "question": "What is the capital of France?",
+      "options": [
+        {
+          "value": "Berlin"
+        },
+        {
+          "value": "Madrid"
+        },
+        {
+          "value": "Paris"
+        },
+        {
+          "value": "Rome"
+        }
+      ],
+      "correctAnswer": "Paris"
+    },
+    {
+      "question": "Which planet is known as the Red Planet?",
+      "options": [
+        {
+          "value": "Earth"
+        },
+        {
+          "value": "Mars"
+        },
+        {
+          "value": "Jupiter"
+        },
+        {
+          "value": "Saturn"
+        }
+      ],
+      "correctAnswer": "Mars"
+    },
+    {
+      "question": "Who wrote 'Hamlet'?",
+      "options": [
+        {
+          "value": "J.K. Rowling"
+        },
+        {
+          "value": "William Shakespeare"
+        },
+        {
+          "value": "Charles Dickens"
+        },
+        {
+          "value": "Mark Twain"
+        }
+      ],
+      "correctAnswer": "William Shakespeare"
+    },
+    {
+      "question": "What is the chemical symbol for water?",
+      "options": [
+        {
+          "value": "H2O"
+        },
+        {
+          "value": "O2"
+        },
+        {
+          "value": "CO2"
+        },
+        {
+          "value": "NaCl"
+        }
+      ],
+      "correctAnswer": "H2O"
+    },
+    {
+      "question": "What is the tallest mountain in the world?",
+      "options": [
+        {
+          "value": "K2"
+        },
+        {
+          "value": "Mount Everest"
+        },
+        {
+          "value": "Kangchenjunga"
+        },
+        {
+          "value": "Makalu"
+        }
+      ],
+      "correctAnswer": "Mount Everest"
+    }
+  ]
+}
+
+POST: https://dummy-q-server.onrender.com/api/quizzes/
+
+GET: https://dummy-q-server.onrender.com/api/quizzes/
+
+GET by quiz id : https://dummy-q-server.onrender.com/api/quizzes/:id
+
+POST submit the quiz response by quiz id: http://localhost:8000/api/quizzes/66dac88ac434ff51034bf00b/submit
+
+PUT : https://dummy-q-server.onrender.com/api/quizzes/:id by quiz id
+
+DELETE: https://dummy-q-server.onrender.com/api/quizzes/:id  by quiz id
+
+
+POST: https://dummy-q-server.onrender.com/api/auth/login
+body
+{
+  "username":"priti",
+  "email":"priti2@gmail.com",
+  "password":"priti"
+}
+
+POST: https://dummy-q-server.onrender.com/api/auth/register
+
+
+GET: http://localhost:8000/api/quizzes/66dc33e565b2e27d7017d5d1/submissions  get all the user submissions
