@@ -135,7 +135,7 @@ export default function Footer() {
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/create"
+                  href="/"
                 >
                   Create Quiz
                 </a>
@@ -143,7 +143,7 @@ export default function Footer() {
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/quizzes"
+                  href="/"
                 >
                   View Quiz
                 </a>
@@ -159,7 +159,7 @@ export default function Footer() {
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/leaderboard"
+                  href="/"
                 >
                   LeaderBoard
                 </a>
