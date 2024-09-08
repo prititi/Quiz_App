@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Card, CardContent, Typography, Button, CircularProgress } from "@mui/material";
+import { Card, CardContent, Typography, Button, CircularProgress, IconButton } from "@mui/material";
 import QuizIcon from "@mui/icons-material/Quiz";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuizzes } from "../redux/quizzes/quizThunks";
@@ -10,11 +11,11 @@ const QuizzesList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { quizzes, status, error } = useSelector((state) => state.quiz); // Access quizzes state from the Redux store
+  const { quizzes, status, error } = useSelector((state) => state.quiz);
 
   useEffect(() => {
     if (status === "idle") {
-      dispatch(fetchQuizzes()); // Dispatch the thunk to fetch quizzes when component mounts
+      dispatch(fetchQuizzes());
     }
   }, [dispatch, status]);
 
@@ -29,6 +30,13 @@ const QuizzesList = () => {
     console.log(`Viewing Leaderboard for Quiz ID: ${quizId}`);
   };
 
+  const handleEditQuiz = (quiz) => {
+    console.log(`Editing Quiz ID: ${quiz}`);
+
+    navigate("/create", { state: { editMode: true, quiz } });
+    // Add your edit functionality here, e.g., opening an edit form
+  };
+
   return (
     <div className="container mx-auto p-4 mt-16">
       <Typography variant="h4" component="h1" className="text-center font-bold text-gray-800 mb-8">
@@ -39,14 +47,18 @@ const QuizzesList = () => {
           <CircularProgress />
         </div>
       )}
-      {/* {status === "failed" && <p>Error: {error}</p>} */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {quizzes?.map((quiz) => (
           <Card key={quiz.quiz_id} className="bg-white shadow-lg rounded-lg">
             <CardContent className="p-6">
-              <Typography variant="h5" component="div" className="font-bold text-gray-800 mb-2">
-                {quiz.title}
-              </Typography>
+              <div className="flex items-center justify-between">
+                <Typography variant="h5" component="div" className="font-bold text-gray-800">
+                  {quiz.title}
+                </Typography>
+                <IconButton onClick={() => handleEditQuiz(quiz)} className="rounded-full">
+                  <EditIcon />
+                </IconButton>
+              </div>
               <Typography variant="body2" component="p" className="text-gray-600 mb-4">
                 {quiz.description}
               </Typography>

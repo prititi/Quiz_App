@@ -9,18 +9,24 @@ import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../redux/auth/authSlice";
 
 const pages = [
-  { name: " Admin Panel", redirect: "/" },
-  { name: " Quiz Creation", redirect: "/" },
-  { name: " View Quizzes", redirect: "/quizzes" },
-  { name: " Taking a Quiz", redirect: "/" },
-  { name: " Quiz Reporting", redirect: "/" },
+  { name: "Home", redirect: "/" },
+  { name: "Quiz Creation", redirect: "/create" },
+  { name: "View Quizzes", redirect: "/quizzes" },
+  { name: "Taking a Quiz", redirect: "/quizzes" },
+  { name: "Leaderboard", redirect: "/quizzes" },
 ];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const auth = useSelector((state) => state.auth);
+  console.log({ auth });
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -57,21 +63,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Button
-              sx={{
-                backgroundColor: "white",
-                color: "black",
-                "&:hover": {
-                  backgroundColor: "lightgray",
-                },
-                width: "90px",
-              }}
-              variant="contained"
-              onClick={() => navigate("/register")}
-            >
-              Sign Up
-            </Button>
+          {auth.status === "succeeded" ? (
             <Button
               sx={{
                 backgroundColor: "black",
@@ -83,11 +75,43 @@ function ResponsiveAppBar() {
                 marginX: 2,
               }}
               variant="contained"
-              onClick={() => navigate("/login")}
+              onClick={() => dispatch(logout())}
             >
-              Login
+              Logout
             </Button>
-          </Box>
+          ) : (
+            <Box sx={{ flexGrow: 0 }}>
+              <Button
+                sx={{
+                  backgroundColor: "white",
+                  color: "black",
+                  "&:hover": {
+                    backgroundColor: "lightgray",
+                  },
+                  width: "90px",
+                }}
+                variant="contained"
+                onClick={() => navigate("/register")}
+              >
+                Sign Up
+              </Button>
+              <Button
+                sx={{
+                  backgroundColor: "black",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "gray",
+                  },
+                  width: "90px",
+                  marginX: 2,
+                }}
+                variant="contained"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </Button>
+            </Box>
+          )}
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -119,7 +143,13 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={() => navigate(page.redirect)}>
+                <MenuItem
+                  key={page.name}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate(page.redirect);
+                  }}
+                >
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}

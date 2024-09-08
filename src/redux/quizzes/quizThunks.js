@@ -1,6 +1,6 @@
 // src/redux/quizThunks.js
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchAllQuizzes, fetchQuizById, submitQuizAnswers } from "../../api/apiService";
+import { fetchAllQuizzes, fetchQuizById, submitQuizAnswers, createQuizService, updateQuizService } from "../../api/apiService";
 
 // Fetch all quizzes
 export const fetchQuizzes = createAsyncThunk("quiz/fetchQuizzes", async () => {
@@ -18,4 +18,16 @@ export const fetchQuizData = createAsyncThunk("quiz/fetchQuizData", async (quizI
 export const submitQuiz = createAsyncThunk("quiz/submitQuiz", async ({ quizId, payload }) => {
   const response = await submitQuizAnswers(quizId, payload);
   return response.data;
+});
+
+export const createQuiz = createAsyncThunk("quiz/createQuiz", async ({ data, token }) => {
+  const response = await createQuizService(data, token);
+
+  return "";
+});
+
+export const updateQuiz = createAsyncThunk("quiz/updateQuiz", async ({ id, data, token }) => {
+  const response = await updateQuizService(id, data, token);
+
+  return "";
 });

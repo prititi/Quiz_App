@@ -20,11 +20,10 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { fetchQuizData, submitQuiz } from "../redux/quizzes/quizThunks";
 import { clearResult } from "../redux/quizzes/quizSlice";
-import QuizIcon from "@mui/icons-material/Quiz";
-import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+
 // Validation Schema using Yup
 const schema = yup.object({
   name: yup.string().required("Name is required"),
@@ -38,7 +37,6 @@ const TakeQuiz = () => {
   const quizId = searchParams.get("id");
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
-  const navigate = useNavigate();
 
   const quizData = useSelector((state) => state.quiz.quizData);
   const result = useSelector((state) => state.quiz.result);
@@ -154,27 +152,6 @@ const TakeQuiz = () => {
             </Typography>
           </CardContent>
         </Card>
-
-        <div className="flex md:flex-row flex-col md:justify-between space-y-4 md:space-y-2 mt-3">
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<QuizIcon />}
-            className="w-full md:w-auto bg-blue-500 hover:bg-blue-700 text-white"
-            onClick={() => navigate(`/quizzes`)}
-          >
-            View Quiz
-          </Button>
-          <Button
-            variant="outlined"
-            color="secondary"
-            startIcon={<LeaderboardIcon />}
-            className="w-full md:w-auto border-blue-500 text-blue-500 hover:bg-blue-50"
-            onClick={() => navigate(`/leaderboard?id=${quizId}`)}
-          >
-            View Leaderboard
-          </Button>
-        </div>
       </Box>
     );
   }

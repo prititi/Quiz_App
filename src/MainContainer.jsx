@@ -5,9 +5,10 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import { Register } from "./pages/Register";
-import QuizzesList from "./components/QuizzesList";
-import TakeQuiz from "./components/TakeQuiz";
-import Leaderboard from "./components/LeaderBoard";
+import QuizzesList from "./pages/QuizzesList";
+import TakeQuiz from "./pages/TakeQuiz";
+import Leaderboard from "./pages/LeaderBoard";
+import AdminQuizForm from "./pages/CreateQuiz";
 
 const MainContainer = () => (
   <Router>
@@ -19,6 +20,7 @@ const MainContainer = () => (
         <Route path="/quizzes" element={<QuizzesList />} />
         <Route path="/take-quiz" element={<TakeQuiz />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/create" element={<AdminQuizForm />} />
       </Routes>
     </Layout>
   </Router>
