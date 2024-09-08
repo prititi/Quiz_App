@@ -151,7 +151,7 @@ export default function Footer() {
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/take-quiz"
+                  href="/"
                 >
                   Taking a Quiz
                 </a>
