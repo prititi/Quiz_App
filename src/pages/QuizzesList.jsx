@@ -46,9 +46,7 @@ const QuizzesList = () => {
 
   return (
     <div className="container mx-auto p-4 mt-16">
-      <Typography variant="h4" component="h1" className="text-center font-bold text-gray-800 mb-8">
-        Available Quizzes
-      </Typography>
+      <div className="text-center text-3xl font-semibold text-gray-800 mb-8">Available Quizzes</div>
       {status === "loading" && (
         <div className="min-h-[60vh] flex justify-center items-center">
           <CircularProgress />
@@ -59,9 +57,10 @@ const QuizzesList = () => {
           <Card key={quiz.quiz_id} className="bg-white shadow-lg rounded-lg">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
-                <Typography variant="h5" component="div" className="font-bold text-gray-800">
+                {/* <Typography variant="h5" component="div" className="font-bold text-gray-800">
                   {quiz.title}
-                </Typography>
+                </Typography> */}
+                <div className="text-center text-xl font-semibold text-gray-800 mb-3">{quiz.title}</div>
                 {token && (
                   <div className="flex">
                     <IconButton onClick={() => handleEditQuiz(quiz)} aria-label="Edit" className="rounded-full">

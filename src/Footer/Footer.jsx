@@ -76,7 +76,6 @@ export default function Footer() {
                 href="/"
                 className="flex gap-3 order-first font-medium text-white-900 lg:order-none lg:w-auto title-font"
               >
-               
                 <span className="text-xl font-black leading-none text-black select-none logo mt-3">Quiz App</span>
               </a>
             </div>
@@ -136,31 +135,23 @@ export default function Footer() {
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/upload"
+                  href="/create"
                 >
-                  Admin Panel
+                  Create Quiz
                 </a>
               </li>
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/"
+                  href="/quizzes"
                 >
-                  Quiz Creation
+                  View Quiz
                 </a>
               </li>
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/"
-                >
-                  User Interface
-                </a>
-              </li>
-              <li className="mb-4">
-                <a
-                  className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/"
+                  href="/take-quiz"
                 >
                   Taking a Quiz
                 </a>
@@ -168,9 +159,9 @@ export default function Footer() {
               <li className="mb-4">
                 <a
                   className="text-[#71717A] hover:text-gray-400 transition duration-150 ease-in-out secondary_text link-editable"
-                  href="/"
+                  href="/leaderboard"
                 >
-                  Quiz Reporting
+                  LeaderBoard
                 </a>
               </li>
             </ul>

@@ -124,11 +124,11 @@ const AdminQuizForm = () => {
   }, [creationStatus, updationStatus]);
 
   return (
-    <Box p={4} maxWidth="800px" mx="auto">
+    <Box p={4} maxWidth="600px" mx="auto">
       <Paper elevation={3} sx={{ padding: 4 }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          Create New Quiz
-        </Typography>
+        <div className="text-center text-3xl font-semibold text-gray-800 mb-8">
+          {editMode ? "Update New Quiz" : " Create New Quiz"}
+        </div>
         <Box mt={2}>
           <Controller
             name="title"
