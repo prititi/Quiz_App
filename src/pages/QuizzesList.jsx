@@ -3,21 +3,23 @@ import { Card, CardContent, Typography, Button, CircularProgress, IconButton } f
 import QuizIcon from "@mui/icons-material/Quiz";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchQuizzes } from "../redux/quizzes/quizThunks";
+import { fetchQuizzes, deleteQuizAndFetch } from "../redux/quizzes/quizThunks";
 
 const QuizzesList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { quizzes, status, error } = useSelector((state) => state.quiz);
+  const { quizzes, status } = useSelector((state) => state.quiz);
+  const { token } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchQuizzes());
     }
-  }, [dispatch, status]);
+  }, [status]);
 
   const handleTakeQuiz = (quizId, quiz) => {
     console.log({ quiz });
@@ -34,7 +36,12 @@ const QuizzesList = () => {
     console.log(`Editing Quiz ID: ${quiz}`);
 
     navigate("/create", { state: { editMode: true, quiz } });
-    // Add your edit functionality here, e.g., opening an edit form
+  };
+
+  const handleDeleteQuiz = (quizId) => {
+    console.log(`Deleting Quiz ID: ${quizId}`);
+
+    dispatch(deleteQuizAndFetch({ id: quizId, token }));
   };
 
   return (
@@ -55,9 +62,20 @@ const QuizzesList = () => {
                 <Typography variant="h5" component="div" className="font-bold text-gray-800">
                   {quiz.title}
                 </Typography>
-                <IconButton onClick={() => handleEditQuiz(quiz)} className="rounded-full">
-                  <EditIcon />
-                </IconButton>
+                {token && (
+                  <div className="flex">
+                    <IconButton onClick={() => handleEditQuiz(quiz)} aria-label="Edit" className="rounded-full">
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton
+                      onClick={() => handleDeleteQuiz(quiz.quiz_id)}
+                      aria-label="Delete"
+                      className="rounded-full"
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </div>
+                )}
               </div>
               <Typography variant="body2" component="p" className="text-gray-600 mb-4">
                 {quiz.description}

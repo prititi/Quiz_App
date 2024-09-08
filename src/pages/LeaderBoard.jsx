@@ -99,28 +99,31 @@ const Leaderboard = () => {
             <Tab label="Chart" />
           </Tabs>
 
-          {/* Conditionally render content based on selected tab */}
           {selectedTab === 0 && (
             <List>
-              {leaderboardData.map((user, index) => (
-                <React.Fragment key={index}>
-                  <ListItem>
-                    <ListItemAvatar>
-                      <StyledAvatar>{index + 1}</StyledAvatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={
-                        <>
-                          {user.userName}
-                          {index === 0 && <TrophyIcon />}
-                        </>
-                      }
-                      secondary={`Score: ${user.score}`}
-                    />
-                  </ListItem>
-                  {index < leaderboardData.length - 1 && <Divider />}
-                </React.Fragment>
-              ))}
+              {leaderboardData?.length > 0 ? (
+                leaderboardData.map((user, index) => (
+                  <React.Fragment key={index}>
+                    <ListItem>
+                      <ListItemAvatar>
+                        <StyledAvatar>{index + 1}</StyledAvatar>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={
+                          <>
+                            {user.userName}
+                            {index === 0 && <TrophyIcon />}
+                          </>
+                        }
+                        secondary={`Score: ${user.score}`}
+                      />
+                    </ListItem>
+                    {index < leaderboardData.length - 1 && <Divider />}
+                  </React.Fragment>
+                ))
+              ) : (
+                <div className="flex justify-center items-center min-h-[250px]">No data exists.</div>
+              )}
             </List>
           )}
 

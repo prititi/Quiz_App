@@ -25,3 +25,8 @@ export const updateQuizService = (id, quizData, token) => {
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
   });
 };
+export const deleteQuizService = (id, token) => {
+  axios.delete(`${BASE_URL}/quizzes/${id}`, {
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+  });
+};

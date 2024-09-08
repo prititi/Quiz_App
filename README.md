@@ -102,6 +102,11 @@ This quiz application allows users to create, manage, and take quizzes. The app 
     npm run dev
     ```
 
+5. Run tests for components:
+    ```sh
+    npx vitest run
+    ```
+
 ### Deployment
 
 To deploy the application, follow the instructions for your hosting service (e.g., Vercel, Netlify, AWS). Ensure both frontend and backend are deployed and linked.

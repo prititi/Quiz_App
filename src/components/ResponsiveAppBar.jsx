@@ -38,6 +38,8 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  const filteredPages = auth?.token ? pages : pages.filter((page) => page.name !== "Quiz Creation");
+
   return (
     <AppBar position="static" sx={{ backgroundColor: "white", color: "black" }}>
       <Container maxWidth="xl">
@@ -51,7 +53,7 @@ function ResponsiveAppBar() {
           />
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {filteredPages.map((page) => (
               <Button
                 key={page.name}
                 className="normal-case"
@@ -142,7 +144,7 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {filteredPages.map((page) => (
                 <MenuItem
                   key={page.name}
                   onClick={() => {

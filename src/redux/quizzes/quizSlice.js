@@ -1,6 +1,6 @@
 // src/redux/quizSlice.js
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchQuizzes, fetchQuizData, submitQuiz, createQuiz, updateQuiz } from "./quizThunks";
+import { fetchQuizzes, fetchQuizData, submitQuiz, createQuiz, updateQuiz, deleteQuiz } from "./quizThunks";
 
 const initialState = {
   quizzes: [],
@@ -91,6 +91,20 @@ const quizSlice = createSlice({
       })
       .addCase(updateQuiz.rejected, (state, action) => {
         state.updationStatus = "failed";
+        state.error = action.error.message;
+      })
+
+
+      .addCase(deleteQuiz.pending, (state) => {
+        console.log("inside createQuiz");
+        state.deletionStatus = "loading";
+      })
+      .addCase(deleteQuiz.fulfilled, (state, action) => {
+        state.deletionStatus = "succeeded";
+        state.result = action?.payload;
+      })
+      .addCase(deleteQuiz.rejected, (state, action) => {
+        state.deletionStatus = "failed";
         state.error = action.error.message;
       });
   },
