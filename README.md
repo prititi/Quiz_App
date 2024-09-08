@@ -131,10 +131,9 @@ To deploy the application, follow the instructions for your hosting service (e.g
     https://dummy-q-server.onrender.com
     ```
 
-2. Frontend deployment link:
-    ```sh
-    https://quiz-app-delta-bay.vercel.app/
-    ```
+2. Frontend deployment link:  
+   [https://quiz-app-delta-bay.vercel.app/](https://quiz-app-delta-bay.vercel.app/)
+
 
 ## License
 
