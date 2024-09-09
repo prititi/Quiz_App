@@ -109,18 +109,21 @@ const LoginPage = () => {
               </div>
             )}
           </form>
-          <div className="mt-4 text-center text-sm text-[#6C6C6E]">
-            Don&apos;t have an account?{" "}
-            <Link href="/register" className="underline">
+
+          <div className="mt-1 flex text-center text-sm text-[#6C6C6E]">
+            <span className="mt-2"> Don&apos;t have an account? </span>
+            <Button
+              className="underline text-blue-400 bg-blue-600 normal-case text-sm"
+              onClick={() => navigate("/register")}
+            >
               Sign up
-            </Link>
+            </Button>
           </div>
         </div>
       </div>
       {!isMobile && (
         <div className="">
           <img
-            // src="https://png.pngtree.com/png-clipart/20210502/original/pngtree-quiz-png-transparent-background-png-image_6271115.jpg"
             src="https://png.pngtree.com/png-vector/20220520/ourmid/pngtree-comic-speech-bubbles-with-text-quiz-png-image_4667086.png"
             alt="Image"
             width="1500"
